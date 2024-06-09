@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
+use App\Http\Controllers\MovieCoverController;
 use App\Http\Controllers\MovieDetailController;
 use App\Http\Controllers\castController;
 use App\Http\Controllers\CastDetailController;
