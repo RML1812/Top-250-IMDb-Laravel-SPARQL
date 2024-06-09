@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex overflow-hidden relative flex-col items-center pb-16">
+    <div class="flex overflow-hidden relative flex-col items-center pb-16 w-full min-h-screen">
         <div>
             <img
                 loading="lazy"
-                src="{{ asset('assets/photoMovie.png') }}"
+                src="{{ asset('assets/bg-topp.jpg') }}"
                 class="object-cover absolute inset-0 size-full opacity-50"
-            />
-            <div class="absolute inset-0 bg-[#252B48] opacity-80"></div> 
+                />
+            <div class="absolute inset-0 bg-[#131831] opacity-80"></div> 
         </div>
-        <div class="flex relative gap-5 justify-between mt-12 flex-wrap">
-            <div class="flex flex-col justify-center px-5 text-white">
+        <div class="flex relative gap-96 justify-between mt-12 flex-wrap">
+            <div class="flex flex-col justify-center text-white">
                 <div class="text-3xl font-extrabold">TOP 250 MOVIES</div>
                 <div class="mt-2 text-xl font-semibold">Main Source: IMDb</div>
             </div>
