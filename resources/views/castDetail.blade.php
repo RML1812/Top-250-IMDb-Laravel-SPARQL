@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex overflow-hidden relative flex-col items-center pb-16">
-    <div>
+<div class="flex overflow-hidden relative flex-col items-center pb-16 bg-custom-radial">
+    {{-- <div>
         <img src="{{ asset('assets/bg-detail.png') }}" class="absolute inset-0"/>
-    </div>
+    </div> --}}
     <div class="flex relative self-center mt-16 px-24">
         <div class="flex gap-5 max-md:flex-col">
             <div class="flex flex-col w-3/12">
@@ -21,19 +21,21 @@
                     <div class="text-3xl font-bold text-white max-md:max-w-full">
                         Morgan Freeman
                     </div>
-                    <div class="flex gap-5 self-start mt-9 text-justify">
-                        <div class="text-xl font-semibold text-slate-400">Birthday</div>
-                        <div class="text-lg font-medium text-white">
-                            June 1, 1937 (age 87 years)
+                    <div class="grid grid-cols-3 pr-96 mt-5">
+                        <div class="col-span-1">
+                            <div class="text-xl font-semibold text-slate-400">Birthday</div>
+                            <div class="text-xl font-semibold text-slate-400">Place of Birth</div>
+                        </div>
+                        <div class="col-span-2">
+                            <div class="text-lg font-medium text-white">
+                                June 1, 1937 (age 87 years)
+                            </div>
+                            <div class="text-lg font-medium text-white">
+                                Memphis, Tennessee, United States
+                            </div>
                         </div>
                     </div>
-                    <div class="flex gap-5 self-start text-justify">
-                        <div class="text-xl font-semibold text-slate-400">Place of Birth</div>
-                        <div class="text-lg font-medium text-white">
-                            Memphis, Tennessee, United States
-                        </div>
-                    </div>
-                    <div class="mt-9 text-xl font-semibold text-justify text-slate-400 max-md:max-w-full">
+                    <div class="mt-5 text-xl font-semibold text-justify text-slate-400 max-md:max-w-full">
                         Contributes In:
                     </div>
                     <div class="justify-center mt-5 max-md:max-w-full">
@@ -56,7 +58,7 @@
                                         </div>
                                     </div>
                                     <div class="justify-center self-end p-2.5 mt-3 font-medium text-justify text-gray-800 rounded-2xl bg-slate-300">
-                                        See Details
+                                        <a href="{{ route('movieDetail') }}">See Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +80,7 @@
                                         </div>
                                     </div>
                                     <div class="justify-center self-end p-2.5 mt-3 font-medium text-justify text-gray-800 rounded-2xl bg-slate-300">
-                                        See Details
+                                        <a href="{{ route('movieDetail') }}">See Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +102,7 @@
                                         </div>
                                     </div>
                                     <div class="justify-center self-end p-2.5 mt-3 font-medium text-justify text-gray-800 rounded-2xl bg-slate-300">
-                                        See Details
+                                        <a href="{{ route('movieDetail') }}">See Details</a>
                                     </div>
                                 </div>
                             </div>
