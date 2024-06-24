@@ -13,7 +13,7 @@ This notebook covers the following processes:
    - Additional data such as ratings and movie posters are scraped from Rotten Tomatoes using BeautifulSoup.
 
 3. **Adding Cast Data and Pictures:**
-   - Cast details and their pictures are gathered by scraping data from TMDb using Selenium.
+   - Cast details and their pictures are gathered by scraping data from TMDb using BeautifulSoup.
 
 ### RDF for Top 250 Movie by IMDb - Semantic Web.ipynb
 
