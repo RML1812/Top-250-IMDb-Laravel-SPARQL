@@ -9,7 +9,7 @@
           <a href="{{ route('topPage') }}" class="text-[16px] font-medium text-[#F7E987] ">Top 250</a>
         </li>
         <li class="nav-item ml-8">
-          <a href="{{ route('genre') }}" class="text-[16px] font-normal text-white">Genre</a>
+          <a href="{{ route('genre.filter') }}" class="text-[16px] font-normal text-white">Genre</a>
         </li>
       </ul>
     </div>

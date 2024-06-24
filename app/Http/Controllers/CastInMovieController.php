@@ -5,24 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class MovieCoverController extends Controller
+class CastInMovieController extends Controller
 {
-    public function getMovies()
+    public function show($name)
     {
+        // Process the name parameter to replace underscores with spaces
+        $processedName = str_replace('_', ' ', $name);
+
         // Define the SPARQL query
-        $sparqlQuery = '
+        $sparqlQuery = "
             PREFIX ex: <http://example.org/>
-            SELECT ?rank ?title ?poster ?imdbRating ?imdbVotes ?rottenRating WHERE {
+            SELECT DISTINCT ?rank ?title ?poster ?imdbRating ?imdbVotes ?rottenRating WHERE {
                 ?movie a ex:Movie ;
-                       ex:hasRank ?rank ;
-                       ex:hasTitle ?title ;
-                       ex:hasPoster ?poster ;
-                       ex:hasIMDBRating ?imdbRating ;
-                       ex:hasIMDBVotes ?imdbVotes ;
-                       ex:hasRottenRating ?rottenRating .
+                    ex:hasRank ?rank ;
+                    ex:hasTitle ?title ;
+                    ex:hasPoster ?poster ;
+                    ex:hasIMDBRating ?imdbRating ;
+                    ex:hasIMDBVotes ?imdbVotes ;
+                    ex:hasRottenRating ?rottenRating ;
+                    ex:hasCast ?cast ;
+                    ex:hasDirector ?director ;
+                    ex:hasWriter ?writer .
+                ?cast ex:hasName ?nameCast .
+                ?director ex:hasName ?nameDirector .
+                ?writer ex:hasName ?nameWriter .
+                FILTER (?nameCast = \"$processedName\" || ?nameDirector = \"$processedName\" || ?nameWriter = \"$processedName\")
             }
             ORDER BY ?rank
-        ';
+        ";
 
         // Define the request data
         $requestData = [

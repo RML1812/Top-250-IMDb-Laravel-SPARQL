@@ -1,11 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".movies-container");
+    let moviesData = []; // Store all movie data for filtering
+
+    // Fetch movies from API
     fetch("/api/moviecover")
         .then((response) => response.json())
         .then((data) => {
-            const container = document.querySelector(".movies-container");
-            container.innerHTML = ""; // Clear the container before adding new content
-            data.forEach((movie) => {
-                const movieElement = `
+            moviesData = data; // Store movie data
+            displayMovies(moviesData); // Display all movies initially
+        })
+        .catch((error) => console.error("Error fetching movies:", error));
+
+    // Function to display movies based on provided data
+    function displayMovies(movies) {
+        container.innerHTML = ""; // Clear previous movies
+        movies.forEach((movie) => {
+            const movieElement = `
                 <div class="flex flex-col w-3/12 max-md:ml-0 max-md:w-full">
                     <div class="flex relative flex-col grow justify-center px-4 pt-2.5 pb-3.5 mx-auto w-full text-sm tracking-tight bg-white rounded-xl shadow-sm max-md:mt-10">
                         <div class="relative w-full h-[360px]">
@@ -25,13 +35,22 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                         </div>
                         <div class="justify-center self-end p-2.5 mt-3 font-medium text-justify text-gray-800 rounded-2xl bg-slate-300">
-                            <a href="/movieDetail">See Details</a>
+                            <a href="/movieDetail/${movie.rank}">See Details</a>
                         </div>
                     </div>
                 </div>
                 `;
-                container.innerHTML += movieElement;
-            });
-        })
-        .catch((error) => console.error("Error fetching movies:", error));
+            container.innerHTML += movieElement;
+        });
+    }
+
+    // Add event listener to search input
+    const searchInput = document.querySelector("input[type='search']");
+    searchInput.addEventListener("input", function (event) {
+        const searchQuery = event.target.value.trim().toLowerCase(); // Get search query
+        const filteredMovies = moviesData.filter((movie) =>
+            movie.title.toLowerCase().includes(searchQuery)
+        ); // Filter movies based on title
+        displayMovies(filteredMovies); // Display filtered movies
+    });
 });

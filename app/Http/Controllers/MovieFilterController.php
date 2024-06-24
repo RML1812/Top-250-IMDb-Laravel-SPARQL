@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class MovieCoverController extends Controller
+class MovieFilterController extends Controller
 {
     public function getMovies()
     {
@@ -20,6 +20,7 @@ class MovieCoverController extends Controller
                        ex:hasIMDBRating ?imdbRating ;
                        ex:hasIMDBVotes ?imdbVotes ;
                        ex:hasRottenRating ?rottenRating .
+                       
             }
             ORDER BY ?rank
         ';
